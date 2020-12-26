@@ -144,3 +144,26 @@ export const homeViewConfig = {
 		title: "时间路口相册 一个长在云端的相册"
 	}
 }
+
+export const aboutViewConfig = {
+	cards: [
+		{
+			title: "郑楚权"
+		},
+		{
+			title: "江富豪"
+		},
+		{
+			title: "郑颖"
+		},
+		{
+			title: "邱相昭"
+		},
+		{
+			title: "张洁婷"
+		},
+		{
+			title: "符昭女"
+		}
+	]
+}

@@ -1,11 +1,17 @@
 <template>
   <div class="home">
     <header class="home-header vivify swoopInTop">
-      <h2 class="home-title vivify unfold delay-500">时间路口相册</h2>
-      <h3 class="home-slogan vivify unfold delay-1000" @click="slogan.handle">
+      <h2 class="home-title vivify unfold delay-500" :isMobile="isMobile">
+        时间路口相册
+      </h2>
+      <h3
+        class="home-slogan vivify unfold delay-1000"
+        @click="slogan.handle"
+        :isMobile="isMobile"
+      >
         {{ slogan.text }}
       </h3>
-      <p class="home-tags">
+      <p class="home-tags" v-if="!isMobile">
         <a-tag
           class="home-tag vivify unfold delay-1500"
           v-for="tag of tags"
@@ -23,7 +29,6 @@
 
     <b-carousel :imgs="imgs" />
     <b-cards :cards="cards" />
-
     <b-footer :title="footer.title" />
   </div>
 </template>
@@ -34,6 +39,7 @@ import { useDynamicComponents } from "@u/component.js";
 import bCarousel from "@b/carousel.vue";
 import bCards from "@b/cards.vue";
 import bFooter from "@b/footer.vue";
+import { useIsMobileStatus } from "@u/mobile";
 
 const { tags, slogan, imgs, cards, footer } = homeViewConfig;
 
@@ -44,12 +50,14 @@ const homeView = {
     bFooter,
   },
   setup() {
+    const isMobile = useIsMobileStatus();
     return {
       tags,
       slogan,
       imgs,
       cards,
       footer,
+      isMobile,
     };
   },
 };
@@ -88,6 +96,11 @@ export default homeView;
   text-align: center;
 }
 
+.home-title[ismobile="true"] {
+  width: 80% !important;
+  font-size: 30px !important;
+}
+
 .home-slogan {
   font-size: 20px;
   width: 50%;
@@ -99,6 +112,11 @@ export default homeView;
   border: 2px solid #c8e6c9;
   transition: all 0.5s ease-in-out;
   cursor: pointer;
+}
+
+.home-slogan[isMobile="true"] {
+  font-size: 18px !important;
+  width: 90% !important;
 }
 
 .home-slogan:hover {

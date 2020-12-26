@@ -1,10 +1,17 @@
-import { Avatar, Button, Tag } from "ant-design-vue"
-import { ElImage } from "element-plus"
+import { Avatar, Button, Tag, Alert } from "ant-design-vue"
+import { ElImage, ElCard } from "element-plus"
 
 /**
  * @type {import("vue").Component[]}
  */
-const components = [Avatar, Button, Tag, ElImage]
+const components = [
+	Avatar,
+	Button,
+	Tag,
+	ElImage,
+	Alert,
+	ElCard
+]
 
 /**
  * @type {import("vue").Plugin}

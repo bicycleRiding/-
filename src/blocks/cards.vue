@@ -13,12 +13,17 @@
 
 <script>
 import { ElRow, ElCol, ElCard } from "element-plus";
+import { useIsMobileStatus } from "@u/mobile";
 
 export default {
   props: {
     cards: {
       type: Array,
       default: () => [],
+    },
+    spanNum: {
+      type: Number,
+      default: 0,
     },
   },
   components: {
@@ -27,8 +32,11 @@ export default {
     ElCard,
   },
   setup(props) {
-    const cardSpan = Math.ceil(24 / props.cards.length);
-
+    const spanNum = props.spanNum || props.cards.length;
+    let cardSpan = Math.ceil(24 / spanNum);
+    if (useIsMobileStatus()) {
+      cardSpan = 24;
+    }
     return {
       cardSpan,
     };
@@ -37,12 +45,8 @@ export default {
 </script>
 
 <style scoped>
-.b-cards {
-  margin: 20px 0;
-}
-
 .b-card {
-  margin: 0 10px;
+  margin: 10px 10px;
   text-align: center;
 }
 

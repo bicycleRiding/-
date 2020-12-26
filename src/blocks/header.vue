@@ -7,8 +7,38 @@
       </h1>
     </template>
 
+    <template #subTitle>
+      <ProfileTwoTone
+        class="b-mobile-icon vivify swoopInTop"
+        v-if="isMobile"
+        @click="shoMobileDrawer"
+      />
+    </template>
+
+    <a-drawer
+      title="目录导航"
+      placement="right"
+      :closable="false"
+      width="200"
+      v-model:visible="mobileDrawerVisible"
+    >
+      <ul>
+        <li v-for="item of menu" :key="item.name">
+          <a-button
+            :type="item.type"
+            @click="item.handle"
+            block
+            class="b-header-mobile-menu-item"
+          >
+            <component :is="item.icon.displayName"></component
+            >{{ item.name }}</a-button
+          >
+        </li>
+      </ul>
+    </a-drawer>
+
     <template #extra>
-      <ul class="b-header-menu">
+      <ul class="b-header-menu" v-if="!isMobile">
         <li v-for="item of menu" :key="item.name">
           <a-button :type="item.type" @click="item.handle">
             <component :is="item.icon.displayName"></component
@@ -21,24 +51,37 @@
 </template>
 
 <script>
-import { PageHeader } from "ant-design-vue";
+import { PageHeader, Drawer } from "ant-design-vue";
+import { ProfileTwoTone } from "@ant-design/icons-vue";
 import { useGlobalScorlledStatus } from "@u/event.js";
 import { bHeaderConfig } from "@vp/config.js";
 import { useDynamicComponents } from "@u/component.js";
+import { useIsMobileStatus } from "@u/mobile";
+import { ref } from "vue";
 
 const { menu, avatarSrc, title } = bHeaderConfig;
 const bHeaderComponent = {
   components: {
     aPageHeader: PageHeader,
+    ProfileTwoTone,
+    aDrawer: Drawer,
   },
   setup() {
     const showTransparent = useGlobalScorlledStatus();
+    const isMobile = useIsMobileStatus();
+
+    const mobileDrawerVisible = ref(false);
+
+    const shoMobileDrawer = () => (mobileDrawerVisible.value = true);
 
     return {
       showTransparent,
       avatarSrc,
       menu,
       title,
+      isMobile,
+      shoMobileDrawer,
+      mobileDrawerVisible,
     };
   },
 };
@@ -89,6 +132,17 @@ export default bHeaderComponent;
   transition: all 0.5s ease-in-out;
 }
 
+.b-mobile-icon {
+  font-size: 35px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.b-mobile-icon:hover {
+  background-color: red;
+}
+
 .b-header-menu {
   display: flex;
   margin-top: 5px;
@@ -96,5 +150,9 @@ export default bHeaderComponent;
 
 .b-header-menu > li {
   margin: 0 5px;
+}
+
+.b-header-mobile-menu-item {
+  margin: 8px 0;
 }
 </style>
