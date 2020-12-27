@@ -8,7 +8,8 @@
     </template>
 
     <template #subTitle>
-      <ProfileTwoTone
+      <AppstoreTwoTone
+        twoToneColor="#52c41a"
         class="b-mobile-icon vivify swoopInTop"
         v-if="isMobile"
         @click="shoMobileDrawer"
@@ -52,7 +53,7 @@
 
 <script>
 import { PageHeader, Drawer } from "ant-design-vue";
-import { ProfileTwoTone } from "@ant-design/icons-vue";
+import { AppstoreTwoTone } from "@ant-design/icons-vue";
 import { useGlobalScorlledStatus } from "@u/event.js";
 import { bHeaderConfig } from "@vp/config.js";
 import { useDynamicComponents } from "@u/component.js";
@@ -63,7 +64,7 @@ const { menu, avatarSrc, title } = bHeaderConfig;
 const bHeaderComponent = {
   components: {
     aPageHeader: PageHeader,
-    ProfileTwoTone,
+    AppstoreTwoTone,
     aDrawer: Drawer,
   },
   setup() {
@@ -100,6 +101,10 @@ export default bHeaderComponent;
   padding: 5px 10px;
   z-index: 99;
   transition: all 0.3s ease-in-out;
+}
+
+.b-header /deep/ .ant-page-header-content {
+  padding: 0;
 }
 
 .b-header:hover {
@@ -140,7 +145,7 @@ export default bHeaderComponent;
 }
 
 .b-mobile-icon:hover {
-  background-color: red;
+  background-color: #80cbc4;
 }
 
 .b-header-menu {

@@ -1,14 +1,18 @@
 <template>
   <el-carousel class="b-carousel" height="400px" direction="vertical">
     <el-carousel-item v-for="item in imgs" :key="item.src">
-      <el-image style="height: 100%" fit="contain" :src="item.src"> </el-image>
+      <el-image style="height: 100%" fit="contain" :src="item.src">
+        <template #placeholder>
+          <LoadingOutlined class="b-carousel-load-icon" />
+        </template>
+      </el-image>
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <script>
 import { ElCarousel, ElCarouselItem } from "element-plus";
-
+import { LoadingOutlined } from "@ant-design/icons-vue";
 export default {
   props: {
     imgs: {
@@ -19,6 +23,7 @@ export default {
   components: {
     ElCarousel,
     ElCarouselItem,
+    LoadingOutlined,
   },
 };
 </script>
@@ -37,5 +42,13 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+.b-carousel-load-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
 }
 </style>

@@ -1,9 +1,18 @@
 <template>
   <el-row class="b-cards">
-    <el-col :span="cardSpan" v-for="card in cards" :key="card.title">
-      <el-card shadow="hover" class="b-card">
+    <el-col :span="cardSpan" v-for="(card, i) in cards" :key="card.title">
+      <el-card
+        shadow="hover"
+        class="b-card vivify popIn"
+        :class="{ [`delay-${(i + 1) * 500}`]: true }"
+      >
         <h3>{{ card.title }}</h3>
-        <el-image :src="card.imgSrc" class="b-card-img"></el-image>
+        <el-image :src="card.imgSrc" class="b-card-img" lazy>
+          <template #placeholder>
+            <LoadingOutlined class="b-card-load-icon" />
+          </template>
+        </el-image>
+
         <p>{{ card.text1 }}</p>
         <p>{{ card.text2 }}</p>
       </el-card>
@@ -14,6 +23,7 @@
 <script>
 import { ElRow, ElCol, ElCard } from "element-plus";
 import { useIsMobileStatus } from "@u/mobile";
+import { LoadingOutlined } from "@ant-design/icons-vue";
 
 export default {
   props: {
@@ -30,6 +40,7 @@ export default {
     ElRow,
     ElCol,
     ElCard,
+    LoadingOutlined,
   },
   setup(props) {
     const spanNum = props.spanNum || props.cards.length;
@@ -52,5 +63,9 @@ export default {
 
 .b-card-img {
   border-radius: 4px;
+}
+
+.b-card-load-icon {
+  font-size: 45px;
 }
 </style>

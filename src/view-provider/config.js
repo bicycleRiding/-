@@ -146,24 +146,106 @@ export const homeViewConfig = {
 }
 
 export const aboutViewConfig = {
+	timeLineInfoTitle: "事件时间线",
+	timeLineInfo: [
+		{
+			time: "2020/12/28",
+			title: "ui与渲染优化",
+			color: "#FFB74D",
+			text: "加入动画，优化首屏渲染"
+		},
+		{
+			time: "2020/12/27",
+			title: "站点部署上线",
+			color: "#7CB342",
+			text: ""
+		},
+		{
+			time: "2020/12/26",
+			title: "移动端兼容",
+			color: "#1A237E",
+			text: ""
+		},
+		{
+			time: "2020/12/26",
+			title: "pc站点建成",
+			color: "#3F51B5",
+			text: ""
+		},
+		{
+			time: "2020/12/23",
+			title: "站点基建",
+			color: "#42A5F5",
+			text: "站点基础布局建设，项目逻辑域抽象划分"
+		},
+		{
+			time: "2020/12/22",
+			title: "建站初始化",
+			color: "#BBDEFB",
+			text:
+				"选取技术栈 vue3 + nginx + ant-design-vue@2 + element-plus 初始化站点项目"
+		},
+		{
+			time: "2020/9/-",
+			title: "项目概念提出",
+			text:
+				"`以分享留下的美好回忆` 作为slogan, 定位为 `一个长在云端的相册`。主营业务有线下实际相册类产品供应和线上社区化分享与存储服务"
+		}
+	],
+	personnelIntroduction: "时间路口相册-人员介绍 19营销3组",
 	cards: [
 		{
-			title: "郑楚权"
+			title: "江富豪",
+			imgSrc: require("@a/11.png")
 		},
 		{
-			title: "江富豪"
+			title: "郑楚权",
+			imgSrc: require("@a/12.png")
 		},
 		{
-			title: "郑颖"
+			title: "张洁婷",
+			imgSrc: require("@a/13.png")
 		},
 		{
-			title: "邱相昭"
+			title: "邱相昭",
+			imgSrc: require("@a/14.png")
 		},
 		{
-			title: "张洁婷"
+			title: "郑颖",
+			imgSrc: require("@a/15.png")
 		},
 		{
-			title: "符昭女"
+			title: "符昭女",
+			imgSrc: require("@a/16.png")
+		}
+	]
+}
+
+export const contactViewConfig = {
+	tableInfo: [
+		{
+			contacts: "郑楚权",
+			platform: "微信",
+			contactNumber: "zcq13119830591"
+		},
+		{
+			contacts: "郑楚权",
+			platform: "邮箱",
+			contactNumber: "1801982702@qq.com"
+		}
+	],
+	tableConfig: [
+		{
+			prop: "contacts",
+			label: "联系人"
+		},
+		{
+			prop: "platform",
+			label: "联系平台"
+		},
+		{
+			prop: "contactNumber",
+			label: "联系账号"
 		}
 	]
 }

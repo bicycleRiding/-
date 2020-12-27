@@ -1,22 +1,32 @@
 <template>
   <section class="b-timeline">
     <el-timeline>
-      <el-timeline-item color="#4FC3F7" timestamp="2018/4/12" placement="top">
-        <el-card>
-          <h4>更新 Github 模板</h4>
-          <p>王小虎 提交于 2018/4/12 20:46</p>
-        </el-card>
-      </el-timeline-item>
-      <el-timeline-item color="#4DD0E1" timestamp="2018/4/3" placement="top">
-        <el-card>
-          <h4>更新 Github 模板</h4>
-          <p>王小虎 提交于 2018/4/3 20:46</p>
-        </el-card>
-      </el-timeline-item>
-      <el-timeline-item color="#4DB6AC" timestamp="2018/4/2" placement="top">
-        <el-card>
-          <h4>更新 Github 模板</h4>
-          <p>王小虎 提交于 2018/4/2 20:46</p>
+      <el-timeline-item
+        :color="item.color || '#4FC3F7'"
+        :timestamp="item.time"
+        placement="top"
+        v-for="(item, i) of timeLineInfo"
+        :key="i"
+      >
+        <el-card
+          class="vivify popIn"
+          :class="{ [`delay-${(i + 1) * 500}`]: true }"
+        >
+          <a-collapse
+            default-active-key="0"
+            expandIconPosition="right"
+            :bordered="false"
+          >
+            <a-collapse-panel
+              key="1"
+              :header="item.title"
+              :show-arrow="!!item.text"
+              class="collapse-panel"
+              :style="customStyle"
+            >
+              <p>{{ item.text }}</p>
+            </a-collapse-panel>
+          </a-collapse>
         </el-card>
       </el-timeline-item>
     </el-timeline>
@@ -25,10 +35,25 @@
 
 <script>
 import { ElTimeline, ElTimelineItem } from "element-plus";
+import { Collapse } from "ant-design-vue";
 export default {
   components: {
     ElTimeline,
     ElTimelineItem,
+    aCollapse: Collapse,
+    aCollapsePanel: Collapse.Panel,
+  },
+  props: {
+    timeLineInfo: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  setup() {
+    return {
+      customStyle:
+        "background: #ECEFF1;border-radius: 4px;border: 0;overflow: hidden;",
+    };
   },
 };
 </script>
@@ -36,6 +61,10 @@ export default {
 <style scoped>
 .b-timeline {
   width: 80%;
-  margin: 10px auto;
+  margin: 5px auto;
+}
+
+.b-timeline-text {
+  color: #546e7a;
 }
 </style>

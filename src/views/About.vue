@@ -1,21 +1,25 @@
 <template>
   <div class="about">
     <section class="about-timeline">
-      <a-alert type="info" class="about-alert">
+      <a-alert
+        type="info"
+        class="about-alert vivify unfold"
+        :isMobile="isMobile"
+      >
         <template #message>
-          <section>重大事件时间轴</section>
+          <section>{{ timeLineInfoTitle }}</section>
         </template>
       </a-alert>
-      <b-timeline />
+      <b-timeline :timeLineInfo="timeLineInfo" />
     </section>
 
     <section class="about-personnel-introduction">
-      <a-alert type="success" class="about-alert">
+      <a-alert type="success" class="about-alert" :isMobile="isMobile">
         <template #message>
-          <section>19营销5班3组 人员介绍</section>
+          <section>{{ personnelIntroduction }}</section>
         </template>
       </a-alert>
-      <b-card :cards="cards" :spanNum="2" />
+      <b-card :cards="cards" :spanNum="3" />
     </section>
   </div>
 </template>
@@ -24,16 +28,27 @@
 import bCard from "@b/cards.vue";
 import bTimeline from "@b/timeline.vue";
 import { aboutViewConfig } from "@vp/config.js";
+import { useIsMobileStatus } from "@u/mobile";
 
 export default {
   components: {
     bCard,
   },
   setup() {
-    const { cards } = aboutViewConfig;
+    const {
+      cards,
+      timeLineInfo,
+      timeLineInfoTitle,
+      personnelIntroduction,
+    } = aboutViewConfig;
+    const isMobile = useIsMobileStatus();
     return {
       cards,
       bTimeline,
+      isMobile,
+      timeLineInfo,
+      timeLineInfoTitle,
+      personnelIntroduction,
     };
   },
 };
@@ -46,7 +61,7 @@ export default {
 
 .about > * {
   margin-top: 20px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 4px;
 }
 
@@ -55,6 +70,12 @@ export default {
   margin: 0 auto;
   text-align: center;
   cursor: pointer;
+}
+
+.about-alert[isMobile="true"] {
+  font-size: 18px;
+  width: 80% !important;
+  margin: 15px auto;
 }
 
 .about-timeline {
