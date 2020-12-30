@@ -1,5 +1,11 @@
 import { Avatar, Button, Tag, Alert } from "ant-design-vue"
-import { ElImage, ElCard } from "element-plus"
+import {
+	ElImage,
+	ElCard,
+	ElCarousel,
+	ElCarouselItem,
+	ElTag
+} from "element-plus"
 
 /**
  * @type {import("vue").Component[]}
@@ -10,7 +16,10 @@ const components = [
 	Tag,
 	ElImage,
 	Alert,
-	ElCard
+	ElCard,
+	ElCarousel,
+	ElCarouselItem,
+	ElTag
 ]
 
 /**

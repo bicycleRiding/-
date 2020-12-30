@@ -1,6 +1,6 @@
 <template>
-  <main class="not-found vivify swoopInTop">
-    <a-empty>
+  <main class="not-found will-change-contents">
+    <a-empty class="vivify swoopInTop">
       <template #description>
         <span> 无此页面 </span>
       </template>

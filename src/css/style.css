@@ -44,3 +44,10 @@ li {
 	background-color: rgb(246, 247, 248);
 	border-radius: 10px;
 }
+
+/*
+ GPU 优化，加在应用动画元素的父级
+*/
+.will-change-contents {
+	will-change: contents;
+}

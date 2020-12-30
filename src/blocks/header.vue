@@ -1,5 +1,8 @@
 <template>
-  <a-page-header class="b-header" :showTransparent="showTransparent">
+  <a-page-header
+    class="b-header will-change-contents"
+    :showTransparent="showTransparent"
+  >
     <template #title>
       <h1 class="b-header-title vivify swoopInTop" @click="title.handle">
         <a-avatar :src="avatarSrc" />
@@ -8,7 +11,7 @@
     </template>
 
     <template #subTitle>
-      <AppstoreTwoTone
+      <ContainerTwoTone
         twoToneColor="#52c41a"
         class="b-mobile-icon vivify swoopInTop"
         v-if="isMobile"
@@ -53,7 +56,7 @@
 
 <script>
 import { PageHeader, Drawer } from "ant-design-vue";
-import { AppstoreTwoTone } from "@ant-design/icons-vue";
+import { AppstoreTwoTone, ContainerTwoTone } from "@ant-design/icons-vue";
 import { useGlobalScorlledStatus } from "@u/event.js";
 import { bHeaderConfig } from "@vp/config.js";
 import { useDynamicComponents } from "@u/component.js";
@@ -66,6 +69,7 @@ const bHeaderComponent = {
     aPageHeader: PageHeader,
     AppstoreTwoTone,
     aDrawer: Drawer,
+    ContainerTwoTone,
   },
   setup() {
     const showTransparent = useGlobalScorlledStatus();

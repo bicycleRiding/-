@@ -7,6 +7,7 @@
         placement="top"
         v-for="(item, i) of timeLineInfo"
         :key="i"
+        class="will-change-contents"
       >
         <el-card
           class="vivify popIn"

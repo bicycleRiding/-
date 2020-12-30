@@ -8,11 +8,6 @@ export const routes = [
 		component: () => import("@v/Home.vue")
 	},
 	{
-		path: "/service",
-		name: "服务",
-		component: () => import("@v/Service.vue")
-	},
-	{
 		path: "/product",
 		name: "产品",
 		component: () => import("@v/Product.vue")

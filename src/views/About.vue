@@ -5,6 +5,7 @@
         type="info"
         class="about-alert vivify unfold"
         :isMobile="isMobile"
+        @click="timeLineInfoHandle"
       >
         <template #message>
           <section>{{ timeLineInfoTitle }}</section>
@@ -14,12 +15,17 @@
     </section>
 
     <section class="about-personnel-introduction">
-      <a-alert type="success" class="about-alert" :isMobile="isMobile">
+      <a-alert
+        type="success"
+        class="about-alert"
+        :isMobile="isMobile"
+        @click="personnelIntroductionHandle"
+      >
         <template #message>
           <section>{{ personnelIntroduction }}</section>
         </template>
       </a-alert>
-      <b-card :cards="cards" :spanNum="3" />
+      <b-card :cards="cards" :spanNum="4" />
     </section>
   </div>
 </template>
@@ -40,9 +46,13 @@ export default {
       timeLineInfo,
       timeLineInfoTitle,
       personnelIntroduction,
+      timeLineInfoHandle = () => {},
+      personnelIntroductionHandle = () => {},
     } = aboutViewConfig;
     const isMobile = useIsMobileStatus();
     return {
+      timeLineInfoHandle,
+      personnelIntroductionHandle,
       cards,
       bTimeline,
       isMobile,
@@ -84,5 +94,13 @@ export default {
 
 .about-personnel-introduction {
   background-color: #81c784;
+}
+.about-alert {
+  transition: all 0.5s ease-in-out;
+}
+
+.about-alert:hover {
+  background-color: #cfd8dc;
+  transition: all 0.5s ease-in-out;
 }
 </style>

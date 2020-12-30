@@ -1,6 +1,12 @@
 <template>
-  <main class="contact">
-    <el-table :data="tableInfo" stripe border style="border-radius: 4px">
+  <main class="contact will-change-contents">
+    <el-table
+      class="vivify unfold"
+      :data="tableInfo"
+      stripe
+      border
+      style="border-radius: 4px"
+    >
       <el-table-column
         :prop="item.prop"
         :label="item.label"
@@ -31,7 +37,7 @@ export default {
 <style scoped>
 .contact {
   padding: 10px;
-  margin: 20px 0;
+  margin: 50px 0;
   background-color: #cfd8dc;
 }
 </style>

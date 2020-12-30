@@ -10,6 +10,9 @@ const vueApplicationConfig = {
 				cacheDirectory: resolve(__dirname, "cache")
 			})
 		],
+		externals: {
+			moment: "moment"
+		},
 		resolve: {
 			alias: {
 				"@u": resolve(__dirname, "src/use"),

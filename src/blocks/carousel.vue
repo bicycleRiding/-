@@ -1,7 +1,12 @@
 <template>
   <el-carousel class="b-carousel" height="400px" direction="vertical">
     <el-carousel-item v-for="item in imgs" :key="item.src">
-      <el-image style="height: 100%" fit="contain" :src="item.src">
+      <el-image
+        style="height: 100%"
+        class="b-carousel-load"
+        fit="contain"
+        :src="item.src"
+      >
         <template #placeholder>
           <LoadingOutlined class="b-carousel-load-icon" />
         </template>
@@ -42,6 +47,12 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+.b-carousel-load {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .b-carousel-load-icon {

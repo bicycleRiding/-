@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <header class="home-header vivify swoopInTop">
+  <div class="home will-change-contents">
+    <header class="home-header vivify swoopInTop" >
       <h2 class="home-title vivify unfold delay-500" :isMobile="isMobile">
         时间路口相册
       </h2>
